@@ -10,7 +10,9 @@ use App\Http\Controllers\VeterinarioController;
 
 
 Route::post('registrarCliente', [LoginController::class, 'registrarCliente']);
+Route::post('login', [LoginController::class, 'authenticate']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
