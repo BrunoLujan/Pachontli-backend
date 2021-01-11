@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mascota;
 use App\Models\User;
+use Brick\Math\BigInteger;
 use Illuminate\Http\Request;
 
 class MascotaController extends Controller
@@ -40,7 +41,7 @@ class MascotaController extends Controller
 
     }
 
-    public function editarMascota(Request $request, Mascota $mascota){
+    public function editarMascota(Request $request, BigInteger $idMascota){
         $rules = [
             'nombre'=>'required|string',
             'sexo'=>'required|string',
@@ -52,6 +53,8 @@ class MascotaController extends Controller
             'descripcion'=>'required|string',
         ];
         $this->validate($request, $rules);
+
+        $mascota = Mascota::find($idMascota)->first();
 
         $mascota->nombre = $request->input('nombre');
         $mascota->sexo = $request->input('sexo');
@@ -69,7 +72,8 @@ class MascotaController extends Controller
         ]);
     }
 
-    public function eliminarMascota(Mascota $mascota){
+    public function eliminarMascota(BigInteger $idMascota){
+        $mascota = Mascota::find($idMascota)->first();
         $mascota->delete();
         return response()->json([
             'message' => 'Mascota eliminada con éxito'
@@ -78,10 +82,9 @@ class MascotaController extends Controller
 
     public function getMascotas (Request $request){
         $user_id = $request->user()->id;
-        $mascota = Mascota::where('user_id', $user_id)->first();
+        $mascota = Mascota::where('user_id', $user_id)->get();
         return response()->json($mascota);
     }
-
 
 
 }
