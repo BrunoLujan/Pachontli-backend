@@ -11,8 +11,8 @@ class CitaController extends Controller
 {
     public function registrarCita(Request $request, BigInteger $idVeterinario){
         $rules = [
-            'fecha'=>'required|date',
-            'hora'=>'required|hora',
+            'fecha'=>'required',
+            'hora'=>'required',
         ];
         $this->validate($request, $rules);
 

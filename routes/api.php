@@ -31,6 +31,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('getMascotas', [MascotaController::class, 'getMascotas']);
 
     //Veterinario
-    Route::get('getCitas', [VeterinarioController::class, 'getVeterinarios']);
+    Route::get('getVeterinarios', [VeterinarioController::class, 'getVeterinarios']);
+    Route::post('registrarVeterinario', [VeterinarioController::class, 'registrarVeterinario']);
 });
 
