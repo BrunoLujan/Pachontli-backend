@@ -16,14 +16,14 @@ class MascotaController extends Controller
             'especie'=>'required|string',
             'raza'=>'required|string',
             'peso'=>'required|string',
-            'altura'=>'required|float',
-            'edad'=>'required|integer',
+            'altura'=>'required',
+            'edad'=>'required',
             'descripcion'=>'required|string',
         ];
         $this->validate($request, $rules);
 
         $mascota = new Mascota();
-        $mascota->cliente_id = $request->user()->id;
+        $mascota->user_id = $request->user()->id;
         $mascota->nombre = $request->input('nombre');
         $mascota->sexo = $request->input('sexo');
         $mascota->especie = $request->input('especie');
