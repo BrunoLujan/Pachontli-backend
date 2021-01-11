@@ -11,6 +11,7 @@ use App\Http\Controllers\VeterinarioController;
 
 Route::post('registrarCliente', [LoginController::class, 'registrarCliente']);
 Route::post('login', [LoginController::class, 'authenticate']);
+Route::post('registrarVeterinario', [VeterinarioController::class, 'registrarVeterinario']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('logout', [LoginController::class, 'logout']);
@@ -32,6 +33,5 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
     //Veterinario
     Route::get('getVeterinarios', [VeterinarioController::class, 'getVeterinarios']);
-    Route::post('registrarVeterinario', [VeterinarioController::class, 'registrarVeterinario']);
 });
 
