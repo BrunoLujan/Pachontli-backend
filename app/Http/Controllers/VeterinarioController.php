@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Veterinario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use JWTAuth;
 
 class VeterinarioController extends Controller
 {
