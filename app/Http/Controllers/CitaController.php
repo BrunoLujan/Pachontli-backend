@@ -35,8 +35,8 @@ class CitaController extends Controller
 
     public function editarCita(Request $request, BigInteger $veterinario, BigInteger $idCita){
         $rules = [
-            'fecha'=>'required|date',
-            'hora'=>'required|hora',
+            'fecha'=>'required',
+            'hora'=>'required',
         ];
         $this->validate($request, $rules);
 

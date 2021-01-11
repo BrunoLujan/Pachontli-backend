@@ -48,8 +48,8 @@ class MascotaController extends Controller
             'especie'=>'required|string',
             'raza'=>'required|string',
             'peso'=>'required|string',
-            'altura'=>'required|float',
-            'edad'=>'required|integer',
+            'altura'=>'required',
+            'edad'=>'required',
             'descripcion'=>'required|string',
         ];
         $this->validate($request, $rules);
