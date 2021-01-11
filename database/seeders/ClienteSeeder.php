@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cuenta;
 use Illuminate\Database\Seeder;
 
 class ClienteSeeder extends Seeder
@@ -13,6 +14,6 @@ class ClienteSeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }

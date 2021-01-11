@@ -15,14 +15,14 @@ class CreateMascotasTable extends Migration
     {
         Schema::create('mascotas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cliente_id');
-            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nombre');
             $table->string('sexo');
             $table->string('especie');
             $table->string('raza');
-            $table->string('peso');
-            $table->string('altura');
+            $table->float('peso');
+            $table->float('altura');
             $table->integer('edad');
             $table->string('descripcion');
 
