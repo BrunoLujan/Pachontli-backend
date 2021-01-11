@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
@@ -71,7 +72,6 @@ class LoginController extends Controller
     }
 
     public function logout(){
-
         Auth::guard('api')->logout();
         $success = 'Sesión cerrada';
         return compact('success');

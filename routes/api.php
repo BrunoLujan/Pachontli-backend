@@ -18,6 +18,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     //Cliente
     Route::get('getCliente', [ClienteController::class, 'getCliente']);
 
+    //Cita
+
+
+
     //CRUD Mascota
     Route::post('registrarMascota', [MascotaController::class, 'registrarMascota']);
     Route::put('{mascota}/editarMascota', [MascotaController::class, 'editarMascota']);
