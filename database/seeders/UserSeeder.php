@@ -13,19 +13,18 @@ class UserSeeder extends Seeder
     public function run()
     {
         $usuario = new User();
-        $usuario->email = 'admin@mail.com';
+        $usuario->email = 'cesar@mail.com';
         $usuario->password = Hash::make('ola12345');
         $usuario->save();
 
         $usuario = new User();
-        $usuario->email = 'admin2@mail.com';
+        $usuario->email = 'hector@mail.com';
         $usuario->password = Hash::make('ola12345');
         $usuario->save();
 
         $usuario = new User();
-        $usuario->email = 'admin3@mail.com';
+        $usuario->email = 'simi@mail.com';
         $usuario->password = Hash::make('ola12345');
         $usuario->save();
-
     }
 }
