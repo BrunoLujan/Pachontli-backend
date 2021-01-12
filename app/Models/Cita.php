@@ -10,6 +10,6 @@ class Cita extends Model
     use HasFactory;
 
     public function mascota(){
-        return $this->belongsTo(Mascota::class);
+        return $this->belongsTo(Mascota::class, 'mascota_id');
     }
 }

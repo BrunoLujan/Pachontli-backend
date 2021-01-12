@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ClienteController;
+use Brick\Math\BigInteger;
 use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\VeterinarioController;
 
@@ -20,7 +21,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('getCliente', [ClienteController::class, 'getCliente']);
 
     //Cita
-    Route::post('{veterinario}/registrarCita', [CitaController::class, 'registrarCita']);
+    Route::post('{veterinario}/{mascota}/registrarCita', [CitaController::class, 'registrarCita']);
     Route::put('{veterinario/{cita}/editarCita', [CitaController::class, 'editarCita']);
     Route::delete('{cita}/eliminarCita', [CitaController::class, 'eliminarCita']);
     Route::get('getCitasCliente', [CitaController::class, 'getCitasCliente']);

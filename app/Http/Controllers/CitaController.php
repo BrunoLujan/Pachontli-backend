@@ -7,21 +7,22 @@ use App\Models\Cliente;
 use App\Models\Mascota;
 use Brick\Math\BigInteger;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Integer;
 
 class CitaController extends Controller
 {
-    public function registrarCita(Request $request, BigInteger $idVeterinario){
+    public function registrarCita(Request $request, int $idVeterinario, int $idMascota){
         $rules = [
             'fecha'=>'required',
             'hora'=>'required',
         ];
         $this->validate($request, $rules);
 
-        $user_mascota = Mascota::where('user_id', $request->user()->id)->first();
+        //$user_mascota = Mascota::where('user_id', $request->user()->id)->first();
 
         $cita = new Cita();
         $cita->veterinario_id = $idVeterinario;
-        $cita->mascota_id = $user_mascota->id;
+        $cita->mascota_id = $idMascota;
         $cita->fecha = $request->input('fecha');
         $cita->hora = $request->input('hora');
 
@@ -65,8 +66,12 @@ class CitaController extends Controller
 
     public function getCitasCliente(Request $request){
         $user_id = $request->user()->id;
-        $mis_mascotas = Mascota::where('user_id', $user_id)->get();
-        $citas = Cita::where('mascota_id', $mis_mascotas->id)->get();
-        return response()->json($citas);
+        $mascotas = Mascota::where('user_id', $user_id)->get();
+        foreach ($mascotas as $mascota){
+            $citas = Cita::where('mascota_id', $mascota->id)->get();
+            $array[] = $citas;
+        }
+        return $array;
+
     }
 }
