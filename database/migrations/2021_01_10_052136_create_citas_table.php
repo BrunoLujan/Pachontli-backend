@@ -16,12 +16,12 @@ class CreateCitasTable extends Migration
         Schema::create('citas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('veterinario_id');
-            $table->unsignedBigInteger('cliente_id');
+            $table->unsignedBigInteger('mascota_id');
             $table->date('fecha');
             $table->time('hora');
 
             $table->foreign('veterinario_id')->references('id')->on('veterinarios');
-            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('mascota_id')->references('id')->on('mascotas');
 
             $table->timestamps();
         });

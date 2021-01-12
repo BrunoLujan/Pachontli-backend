@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use App\Models\Cliente;
+use App\Models\Mascota;
 use Brick\Math\BigInteger;
 use Illuminate\Http\Request;
 
@@ -16,13 +17,11 @@ class CitaController extends Controller
         ];
         $this->validate($request, $rules);
 
-        $user_cliente = Cliente::where('user_id', $request->user()->id)->first();
-
-
+        $user_mascota = Mascota::where('user_id', $request->user()->id)->first();
 
         $cita = new Cita();
         $cita->veterinario_id = $idVeterinario;
-        $cita->cliente_id = $user_cliente->id;
+        $cita->mascota_id = $user_mascota->id;
         $cita->fecha = $request->input('fecha');
         $cita->hora = $request->input('hora');
 
@@ -64,9 +63,10 @@ class CitaController extends Controller
         ]);
     }
 
-    public function getCitas(Request $request){
+    public function getCitasCliente(Request $request){
         $user_id = $request->user()->id;
-        $citas = Cita::where('user_id', $user_id)->get();
+        $mis_mascotas = Mascota::where('user_id', $user_id)->get();
+        $citas = Cita::where('mascota_id', $mis_mascotas->id)->get();
         return response()->json($citas);
     }
 }

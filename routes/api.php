@@ -23,7 +23,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('{veterinario}/registrarCita', [CitaController::class, 'registrarCita']);
     Route::put('{veterinario/{cita}/editarCita', [CitaController::class, 'editarCita']);
     Route::delete('{cita}/eliminarCita', [CitaController::class, 'eliminarCita']);
-    Route::get('getCitas', [CitaController::class, 'getCitas']);
+    Route::get('getCitasCliente', [CitaController::class, 'getCitasCliente']);
 
     //CRUD Mascota
     Route::post('registrarMascota', [MascotaController::class, 'registrarMascota']);
